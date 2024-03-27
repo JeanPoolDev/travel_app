@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:travel_app/pages/login_page.dart';
+import 'package:travel_app/login_or_register.dart';
 import 'package:travel_app/themes/theme_provider.dart';
 
 void main() {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo', 
-      home: LoginPage(),
+      home: const LoginOrRegister(),
       theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }

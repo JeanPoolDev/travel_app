@@ -2,31 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:travel_app/components/my_button.dart';
 import 'package:travel_app/components/my_textfield.dart';
 
-import 'home_page.dart';
-
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
 
-  const LoginPage({super.key, required this.onTap});
+  const RegisterPage({super.key, required this.onTap});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-
+class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
-  void login(){
-
-    Navigator.push(
-      context, 
-      MaterialPageRoute(
-        builder: (context) => const HomePage(), 
-        ),
-    );
-  }
+  final TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 25,
             ),
             Text(
-              "App de Viajes",
+              "Creemos una cuenta",
               style: TextStyle(
                 fontSize: 16,
                 color: Theme.of(context).colorScheme.inversePrimary,
@@ -54,7 +42,6 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(
               height: 25,
             ),
-
             MyTextField(
                 controller: emailController,
                 hintText: "Correo",
@@ -62,7 +49,6 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(
               height: 10,
             ),
-
             MyTextField(
                 controller: passwordController,
                 hintText: "Contraseña",
@@ -70,34 +56,34 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(
               height: 10,
             ),
-
-            MyButton(
-              text: "Iniciar Sesión", 
-              onTap: login,
-            ),
+            MyTextField(
+                controller: confirmPasswordController,
+                hintText: "Confirmar Contraseña",
+                obscureText: true),
             const SizedBox(
               height: 10,
             ),
-
+            MyButton(text: "Crear Cuenta", onTap: () {}),
+            const SizedBox(
+              height: 10,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "¿No estas registrado? ",
+                  "¿Ya tienes cuenta? ",
                   style: TextStyle(
-                    color: Theme.of(context).colorScheme.inversePrimary
-                  ),   
+                      color: Theme.of(context).colorScheme.inversePrimary),
                 ),
                 const SizedBox(width: 4),
-
                 GestureDetector(
                   onTap: widget.onTap,
                   child: Text(
-                    "Registrate Ahora",
+                    "Iniciar Sesión Ahora",
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary,
                       fontWeight: FontWeight.bold,
-                    ),   
+                    ),
                   ),
                 ),
               ],
